@@ -1,0 +1,70 @@
+<html>
+
+  <head>
+    <title>Cronómetro</title>
+    <meta charset="utf-8">
+
+    <script>
+
+     var cronos;
+     var tiempo;
+	 var id;
+
+      function init() {
+        cronos = setInterval(function() { timer() }, 1);
+		document.getElementById('laps').innerHTML="";
+		id=0;
+      }
+
+      function timer() {
+        tiempo = parseInt(document.getElementById('time').value);
+        document.getElementById('time').value = eval(tiempo + 5);
+		minutos=parseInt(parseInt(eval(tiempo + 1)/1000)/60);
+		segundos=parseInt(parseInt(eval(tiempo + 1)/1000)%60)
+		document.getElementById('tiempo').innerHTML= minutos + "' "+ segundos +"'' "+eval(tiempo + 1)%1000;
+      }
+
+      function reset() {
+        tiempo = parseInt(document.getElementById('time').value);
+        document.getElementById('time').value = "0";
+      }
+
+      function stop() {
+        clearInterval(cronos);
+      }
+
+      function lap() {
+        tiempo = parseInt(document.getElementById('time').value);
+		tiemposeg= document.getElementById('tiempo').innerHTML;
+		
+		document.getElementById('laps').innerHTML+=tiemposeg +" - Equipo <input name='Equipo' id='E"+id+"'> - Puntos <input onchange=actualizar("+id+") name='Puntos' id='P"+id+"'>*15 + Tiempo  =  <input name='Tiempo' type='hidden' id='T"+id+"' value="+tiempo+">Resultado <label id='R"+id+"'>"+tiempo+"</label> <br>";
+		id++;
+      }
+
+	       function actualizar(id) {
+			//alert(1);
+		    tiempoid=document.getElementById("T"+id).value;
+			puntos=document.getElementById("P"+id).value;
+			console.log(tiempoid);
+			console.log(puntos);
+			
+			document.getElementById("R"+id).innerHTML=tiempoid-puntos*1500;
+}
+    </script>
+
+  </head>
+
+  <body>
+
+      <input type="button" value="Empezar" onclick="init()" />
+      <input type="button" value="Reiniciar" onclick="reset()" />
+      <input type="button" value="Parar" onclick="stop()" />
+      <input type="button" value="Lap" onclick="lap()" />
+
+      <input id="time" name="time" value="0" /> <label id="tiempo"></label>
+	<h1>RESULTADOS</h1>
+	<div id="laps"/>
+
+  </body>
+
+</html>
