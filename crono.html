@@ -3,6 +3,24 @@
   <head>
     <title>Cronómetro</title>
     <meta charset="utf-8">
+    <style type="text/css">
+        body{
+         background-image:url('inicio.jpg');
+        }
+        .overlay{
+         padding: 0;
+         margin: 0;
+         border: 0;
+         opacity: 0.85;
+    width: 100%;
+    height: 100%;
+    background: -moz-linear-gradient(-0.55% 99.97% 44.67deg, rgba(106, 138, 124, 1) 0%, rgba(113, 137, 119, 1) 17.4%, rgba(132, 135, 105, 1) 42.63%, rgba(164, 132, 81, 1) 72.45%, rgba(199, 128, 55, 1) 100%);
+    background: -webkit-linear-gradient(44.67deg, rgba(106, 138, 124, 1) 0%, rgba(113, 137, 119, 1) 17.4%, rgba(132, 135, 105, 1) 42.63%, rgba(164, 132, 81, 1) 72.45%, rgba(199, 128, 55, 1) 100%);
+    background: -ms-linear-gradient(44.67deg, rgba(106, 138, 124, 1) 0%, rgba(113, 137, 119, 1) 17.4%, rgba(132, 135, 105, 1) 42.63%, rgba(164, 132, 81, 1) 72.45%, rgba(199, 128, 55, 1) 100%);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#6A8A7C', endColorstr='#C78037' ,GradientType=0)";
+    background: linear-gradient(45.33deg, rgba(106, 138, 124, 1) 0%, rgba(113, 137, 119, 1) 17.4%, rgba(132, 135, 105, 1) 42.63%, rgba(164, 132, 81, 1) 72.45%, rgba(199, 128, 55, 1) 100%);
+        }
+    </style>
 
     <script>
 
@@ -54,8 +72,8 @@
 
   </head>
 
-  <body>
-
+  <body >
+      <div class="overlay">
       <input type="button" value="Empezar" onclick="init()" />
       <input type="button" value="Reiniciar" onclick="reset()" />
       <input type="button" value="Parar" onclick="stop()" />
@@ -64,7 +82,7 @@
       <input id="time" name="time" value="0" /> <label id="tiempo"></label>
 	<h1>RESULTADOS</h1>
 	<div id="laps"/>
-
+</div>
   </body>
 
 </html>
